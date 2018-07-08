@@ -13,17 +13,17 @@ def output(filepath):
     with open(tmp, 'w') as f:
         yield f
     try:
-        os.replace(tmp, filepath)
-    except AttributeError:
         try:
+            os.replace(tmp, filepath)
+        except AttributeError:
+            os.rename(tmp, filepath)
+    except OSError:
+        try:
+            os.remove(filepath)
             os.rename(tmp, filepath)
         except OSError:
-            try:
-                os.remove(filepath)
-                os.rename(tmp, filepath)
-            except OSError:
-                shutil.copy2(tmp, filepath)
-                os.remove(tmp)
+            shutil.copy2(tmp, filepath)
+            os.remove(tmp)
 
 
 def read_open_kernel(path):
