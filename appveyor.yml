@@ -1,2 +1,13 @@
-init:
-  - 'DIR C:\'
+environment:
+  matrix:
+    - PYTHON: Python27-x64
+    - PYTHON: Python36-x64
+
+build: off
+
+before_test:
+  - echo %PYTHON%
+  - python -V
+
+test_script:
+  - python main.py
