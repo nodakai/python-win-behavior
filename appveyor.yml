@@ -7,7 +7,7 @@ build: off
 
 before_test:
   - echo %PYTHON%
-  - python -V
+  - %PYTHON%/python.exe -V
 
 test_script:
-  - python main.py
+  - %PYTHON%/python.exe main.py
