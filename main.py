@@ -21,7 +21,7 @@ def output(filepath):
             try:
                 os.remove(filepath)
                 os.rename(tmp, filepath)
-            except PermissionError:
+            except OSError:
                 shutil.copy2(tmp, filepath)
                 os.remove(tmp)
 
