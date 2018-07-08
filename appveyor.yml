@@ -10,4 +10,8 @@ before_test:
   - "%PYTHON%/python.exe -V"
 
 test_script:
+  - dir
+  - echo testing...
   - "%PYTHON%/python.exe main.py"
+  - echo tested.
+  - dir
