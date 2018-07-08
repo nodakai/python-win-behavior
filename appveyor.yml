@@ -1,13 +1,13 @@
 environment:
   matrix:
-    - PYTHON: Python27-x64
-    - PYTHON: Python36-x64
+    - PYTHON: C:/Python27-x64
+    - PYTHON: C:/Python36-x64
 
 build: off
 
 before_test:
   - echo %PYTHON%
-  - %PYTHON%/python.exe -V
+  - "%PYTHON%/python.exe -V"
 
 test_script:
-  - %PYTHON%/python.exe main.py
+  - "%PYTHON%/python.exe main.py"
