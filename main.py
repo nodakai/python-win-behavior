@@ -13,17 +13,11 @@ def output(filepath):
     with open(tmp, 'w') as f:
         yield f
     try:
-        try:
-            os.replace(tmp, filepath)
-        except AttributeError:
-            os.rename(tmp, filepath)
+        os.remove(filepath)  # PermissionError/OSError on Win32 if in use
+        os.rename(tmp, filepath)
     except OSError:
-        try:
-            os.remove(filepath)
-            os.rename(tmp, filepath)
-        except OSError:
-            shutil.copy2(tmp, filepath)
-            os.remove(tmp)
+        shutil.copy2(tmp, filepath)
+        os.remove(tmp)
 
 
 def read_open_kernel(path):
