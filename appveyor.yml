@@ -1,3 +1,6 @@
+---
+# https://ci.appveyor.com/project/nodakai/python-win-behavior
+
 environment:
   matrix:
     - PYTHON: C:/Python27-x64
